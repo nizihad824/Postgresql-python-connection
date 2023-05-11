@@ -116,6 +116,20 @@ data_inserts = [
     """
 ]
 
+tables = ['users', 'course', 'tasks']
+# execute each SQL command to fetch data from the tables
+for table in tables:
+    try: 
+        cur.execute(f"SELECT * FROM {table}")
+        rows = cur.fetchall()
+        
+        print(f"\n--- Data from {table} ---")
+        for row in rows:
+            print(row)
+        
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 # execute each SQL command to insert the data
 for data_insert in data_inserts:
     try: 
